@@ -104,5 +104,11 @@ print("min:",'%.5f' % min(found_packages))
 print("max:",'%.5f' % max(found_packages))
 print("mean:",'%.5f' % statistics.mean(found_packages))
 print()
-print("Suggested timerate is:", '%.5f' % (max(found_packages)*100))
+print("Suggested timerate is:", '%.5f' % (max(found_packages)*100)) 
+
+# after a 1000 runs we got:
+#min: 0.00004
+#max: 0.01010  # this might have to be the suggested timerate
+#mean: 0.00045
+
 
