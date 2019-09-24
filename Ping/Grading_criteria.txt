@@ -1,0 +1,58 @@
+Grading Objectives
+------------------
+
+Specifically, your client program should:
+
+(1) (10 points) Send the ping message using UDP (Note: Unlike TCP, you do not need to establish
+a connection first, since UDP is a connectionless protocol.)
+
+(2) (10 points) Print the response message from server, if any.
+
+(3) (10 points) Server must change the received message to upper case.
+
+(4) (10 points) Calculate and print the round trip time (RTT), in seconds, of each packet, if server
+responds.
+
+(5) (10 points) If the packet is lost, print “Request timed out”.
+
+(6) (10 points) FInd and print minimum and maximum RTT.
+
+(7) (10 points) Calculate and print average RTT.
+
+(8) (10 points) Calculate and print packet loss percentage.
+
+(9) (10 points) Calculate the estimated RTT. Consider alpha = 0.125.
+
+(10) (10 points) Program must be well documented.
+
+
+During development, you should run the UDPPingerServer.py on your machine, and test your
+client by sending packets to localhost (or, 127.0.0.1). After you have fully debugged your code,
+you should see how your application communicates across the network with the ping server and
+ping client running on different machines.
+
+Message Format
+--------------
+
+The ping messages in this assignment are formatted in a simple way. The client message is one
+line, consisting of ASCII characters in the following format:
+Ping sequence_number time
+where sequence_number starts at 1 and progresses to 10 for each successive ping message sent
+by the client, and time is the time when the client sends the message.
+What to Hand in
+You will hand in the complete client code to iLearn. You will demo the program to your TA who
+will verify that your ping program works as required.
+
+
+Optional Extra-credit Exercises
+-------------------------------
+
+(10 points) Another similar application to the UDP Ping would be the UDP Heartbeat. The
+Heartbeat can be used to check if an application is up and running and to report one-way packet
+loss. The client sends a sequence number and current timestamp in the UDP packet to the
+server, which is listening for the Heartbeat (i.e., the UDP packets) of the client. Upon receiving
+the packets, the server calculates the time difference and reports any lost packets. If the
+Heartbeat packets are missing for some specified period of time, we can assume that the client
+application has stopped.
+Implement the UDP Heartbeat (both client and server). You will need to modify the given
+UDPPingerServer.py, and your UDP ping client.
