@@ -1,6 +1,6 @@
 '''
-Python3
-UDP_Pinger_Client.py
+  Python3
+  UDP_Pinger_Client.py
 '''
 
 """
@@ -33,18 +33,28 @@ of all pings from the client. Suggest what should be the timeout
 period based on the timeout. In addition, calculate the packet loss
 rate(in percentage).
 
-# still needs work
-# start by making a list to keep track of timeouts and RTT time time
+# check
 
 """
 
 
-#IMPORTS (Timing library and socket for network)
+
+
+
+#IMPORTS (Timing library and socket for network and math functions)
 import time
 from socket import*
+import statistics
+
+
 
 serverName ='127.0.0.1'
 serverPort = 12000
+
+# list to be used for tracking RTTs
+RTT_times = [(-1) for _ in range(10)]
+
+
 
 #Creating a Socket object that accepts an address and datagram
 clientSocket = socket(AF_INET,SOCK_DGRAM)
@@ -82,6 +92,17 @@ for i in range(10):
     # time before the message was sent and after it was received
     #RTT = float((int(time.time()*1000)-int(timing))/1000)
     RTT = '%.5f' % ((time.time()*1000 - the_time)/1000)
-
+    RTT_times[i] = float(RTT)
     print ("Ping Number:",str(sequence_num),"RTT:", str(RTT))
+
+
+found_packages = list(filter(lambda x: x > 0,RTT_times))
+print()
+print("Package loss rate: "+ str((10-len(found_packages))/10 *100) + "%")
+print()
+print("min:",'%.5f' % min(found_packages))
+print("max:",'%.5f' % max(found_packages))
+print("mean:",'%.5f' % statistics.mean(found_packages))
+print()
+print("Suggested timerate is:", '%.5f' % (max(found_packages)*100))
 
