@@ -5,26 +5,36 @@ Specifically, your client program should:
 
 (1) (10 points) Send the ping message using UDP (Note: Unlike TCP, you do not need to establish
 a connection first, since UDP is a connectionless protocol.)
+-check
 
 (2) (10 points) Print the response message from server, if any.
+-check
+
 
 (3) (10 points) Server must change the received message to upper case.
+-still needs work
 
 (4) (10 points) Calculate and print the round trip time (RTT), in seconds, of each packet, if server
 responds.
+-check
 
 (5) (10 points) If the packet is lost, print “Request timed out”.
+-needs work
 
 (6) (10 points) FInd and print minimum and maximum RTT.
+-check
 
 (7) (10 points) Calculate and print average RTT.
+-check
 
 (8) (10 points) Calculate and print packet loss percentage.
+-check
 
 (9) (10 points) Calculate the estimated RTT. Consider alpha = 0.125.
+-needs work
 
 (10) (10 points) Program must be well documented.
-
+-check
 
 During development, you should run the UDPPingerServer.py on your machine, and test your
 client by sending packets to localhost (or, 127.0.0.1). After you have fully debugged your code,
