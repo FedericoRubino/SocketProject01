@@ -2,6 +2,43 @@
 Python3
 UDP_Pinger_Client.py
 '''
+
+"""
+You need to implement the following client program.
+The client should send 10 pings to the server.
+
+# check
+
+Because UDP is an unreliable protocol, a packet
+sent from the client to the server may be lost in the network,
+or vice versa. For this reason, the
+client cannot wait indefinitely for a reply to a ping message. You should
+get the client wait up to
+one second for a reply; if no reply is received within one second, your
+client program should
+assume that the packet was lost during transmission across the network.
+
+# check
+
+You will need to look up the Python documentation to
+find out how to set the timeout value on a datagram socket.
+The program must calculate the round-trip
+time for each packet and prints it out individually.
+
+# check
+
+Modify this to correspond to the way the standard ping program works.
+You will need to report the minimum, maximum, and average RTTs at the end
+of all pings from the client. Suggest what should be the timeout
+period based on the timeout. In addition, calculate the packet loss
+rate(in percentage).
+
+# still needs work
+# start by making a list to keep track of timeouts and RTT time time
+
+"""
+
+
 #IMPORTS (Timing library and socket for network)
 import time
 from socket import*
