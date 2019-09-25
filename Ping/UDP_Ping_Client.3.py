@@ -72,7 +72,7 @@ print("------")
 for i in range(10):
     the_time = time.time()*1000
 
-    message = str(i) + " " + str(the_time) + " message"
+    message = str(i + 1) + " " + str(the_time) + " message"
 
     #Socket sends message to address+port#
     clientSocket.sendto(message.encode(),(serverName, serverPort))
