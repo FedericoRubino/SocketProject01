@@ -72,7 +72,7 @@ print("------")
 for i in range(10):
     the_time = time.time()*1000
 
-    message = str(i + 1) + " " + str(the_time) + " message"
+    message = "Ping " + str(i + 1) + " " + str(the_time)
 
     #Socket sends message to address+port#
     clientSocket.sendto(message.encode(),(serverName, serverPort))
@@ -89,7 +89,7 @@ for i in range(10):
     # So long as it doesn't timeout it should take the datagram,
     # decode it, split
     # it at the space by its sequence number and timing
-    sequence_num, timing, msg = modifiedMessage.decode().split()
+    msg, sequence_num, timing = modifiedMessage.decode().split()
 
     # Roundtrip time is calculated by finding the difference between the
     # time before the message was sent and after it was received
@@ -102,7 +102,7 @@ for i in range(10):
 
 
     RTT_times[i] = float(RTT)
-    print ("Ping Number:",str(sequence_num),"RTT:", str(RTT), "Received message:", msg)
+    print ("Received:",msg ,"#:", str(sequence_num),"RTT:", str(RTT))
 
 # makese a list out of RTT_times that are larger than 0
 # In other words this list only has the successful RTTs
