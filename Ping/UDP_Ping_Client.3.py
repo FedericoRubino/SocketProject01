@@ -71,7 +71,8 @@ print("Pings:")
 print("------")
 for i in range(10):
     the_time = time.time()*1000
-
+    
+    #Formating as close to as requested in the assignment
     message = "Ping " + str(i + 1) + " " + str(the_time)
 
     #Socket sends message to address+port#
@@ -102,7 +103,8 @@ for i in range(10):
 
 
     RTT_times[i] = float(RTT)
-    print ("Received:",msg ,"#:", str(sequence_num),"RTT:", str(RTT))
+    #Formating as close to as requested in the assignment
+    print ("Ping", str(sequence_num), msg,('%.5f' % (float(timing)/1000)), str(RTT))
 
 # makese a list out of RTT_times that are larger than 0
 # In other words this list only has the successful RTTs
