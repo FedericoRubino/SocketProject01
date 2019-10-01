@@ -44,7 +44,7 @@ import statistics
 
 
 
-serverName ='127.0.0.1'
+serverName = '127.0.0.1'
 serverPort = 12000
 
 # list to be used for tracking RTTs
@@ -71,8 +71,7 @@ print("Pings:")
 print("------")
 for i in range(10):
     the_time = time.time()*1000
-    
-    #Formating as close to as requested in the assignment
+
     message = "Ping " + str(i + 1) + " " + str(the_time)
 
     #Socket sends message to address+port#
