@@ -39,6 +39,7 @@ rate(in percentage).
 
 #IMPORTS (Timing library and socket for network and math functions)
 import time
+from datetime import datetime
 from socket import*
 import statistics
 
@@ -72,7 +73,8 @@ print("------")
 for i in range(10):
     the_time = time.time()*1000
 
-    message = "Ping " + str(i + 1) + " " + str(the_time)
+#    message = "Ping " + str(i + 1) + " " + str(the_time)
+    message = "Ping " + str(i + 1) + " " + str(the_time) + " " + str(datetime.now().strftime("%H:%M:%S.%f"))
 
     #Socket sends message to address+port#
     clientSocket.sendto(message.encode(),(serverName, serverPort))
@@ -89,7 +91,7 @@ for i in range(10):
     # So long as it doesn't timeout it should take the datagram,
     # decode it, split
     # it at the space by its sequence number and timing
-    msg, sequence_num, timing = modifiedMessage.decode().split()
+    msg, sequence_num, old_time, timing = modifiedMessage.decode().split()
 
     # Roundtrip time is calculated by finding the difference between the
     # time before the message was sent and after it was received
@@ -103,7 +105,7 @@ for i in range(10):
 
     RTT_times[i] = float(RTT)
     #Formating as close to as requested in the assignment
-    print ("Ping", str(sequence_num), msg,('%.5f' % (float(timing)/1000)), str(RTT))
+    print ("Ping " + str(sequence_num) + "\t"+ msg + " " + timing + " " + str(RTT))
 
 # makese a list out of RTT_times that are larger than 0
 # In other words this list only has the successful RTTs
@@ -113,12 +115,12 @@ print()
 print("RTT statistics:")
 print("---------------")
 print("Package loss rate: "+ str((10-len(found_packages))/10 *100) + "%")
-print("min:",'%.5f' % min(found_packages))
-print("max:",'%.5f' % max(found_packages))
-print("mean:",'%.5f' % statistics.mean(found_packages))
+print("min:\t",'%.5f' % min(found_packages))
+print("max:\t",'%.5f' % max(found_packages))
+print("mean:\t",'%.5f' % statistics.mean(found_packages))
 print()
-print("Estimated Roundtrip time",'%.5f' % ( EstimatedRTT))
-print("Deviation Roundtrip time:",'%.5f' % ( DevRTT))
-print("Suggested Timeout Interval is:", '%.5f' % (EstimatedRTT + 4*DevRTT))
+print("Estimated Roundtrip time:\t",'%.5f' % ( EstimatedRTT))
+print("Deviation Roundtrip time:\t",'%.5f' % ( DevRTT))
+print("Suggested Timeout Interval is:\t", '%.5f' % (EstimatedRTT + 4*DevRTT))
 print()
 
