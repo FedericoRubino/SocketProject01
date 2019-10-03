@@ -1,3 +1,8 @@
+'''
+Heartbeat Server
+Federico Rubino
+Timothy Hanneman
+'''
 # UDPPingerServer.py
 # We will need the following module to generate randomized lost packets
 import random

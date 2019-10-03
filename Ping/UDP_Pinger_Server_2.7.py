@@ -3,6 +3,8 @@ UDP Pinger Server
 Python 2.7 Version
 September 20, 2019
 Will be updated to Python 3
+Federico Rubino
+Timothy Hanneman
 '''
 import random
 from socket import *

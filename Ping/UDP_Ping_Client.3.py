@@ -1,6 +1,8 @@
 '''
   Python3
   UDP_Pinger_Client.py
+  Rubino, Federico
+  Hanneman, Timothy
 '''
 
 """
